@@ -59,6 +59,28 @@ section {
 
 .image-container:hover .overlay {
     opacity: 1; /* Hover Effect (Exp 06) */
+    text-decoration: none; /* No underline on link */
+}
+
+.overlay:hover {
+    color: #ffc107; /* Golden hover color */
+}
+
+/* Product Detail Page Styles */
+.product-image-large img {
+    max-height: 500px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.list-group-item {
+    border-left: 0;
+    border-right: 0;
+    font-size: 1.1rem;
+}
+
+.text-justify {
+    text-align: justify;
 }
 
 /* Forms - Now using Bootstrap Forms */

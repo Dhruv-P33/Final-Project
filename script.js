@@ -1,6 +1,8 @@
 // Exp 08: Show Alert on Home Page Load
 window.onload = function() {
-    alert("Welcome to Comfort Furniture Website!");
+    if (window.location.pathname.includes('index.html')) {
+        alert("Welcome to Comfort Furniture Website!");
+    }
 };
 
 // Exp 09/10: Function to check discount using Prompt and Alert

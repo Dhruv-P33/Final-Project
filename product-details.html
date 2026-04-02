@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Comfort Furniture</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+         <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-center">
+            <a class="navbar-brand" href="index.html">Comfort Furniture</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        <div id="product-container" class="row">
+            <!-- Loading message or dynamic content -->
+            <div class="col-12 text-center">
+                <h3>Loading product details...</h3>
+            </div>
+        </div>
+        <div class="text-center mt-5">
+            <a href="index.html" class="btn btn-outline-dark">Back to Home</a>
+        </div>
+    </main>
+
+   <footer class="bg-dark text-white text-center py-3 mt-5">
+        <div class="container">
+            <p>&copy; 2026 Comfort Furniture. Project Presentation by Dhruv Panchal , Dev Patel , Devansh Makwana.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="data.js"></script>
+    <script>
+        // Extract product ID from URL
+        function getProductId() {
+            const params = new URLSearchParams(window.location.search);
+            return parseInt(params.get('id'));
+        }
+
+        // Render product details
+        function renderProduct() {
+            const id = getProductId();
+            const product = products.find(p => p.id === id);
+            const container = document.getElementById('product-container');
+
+            if (product) {
+                container.innerHTML = `
+                    <div class="col-md-6 mb-4">
+                        <div class="product-image-large">
+                            <img src="${product.image}" alt="${product.name}" class="img-fluid rounded shadow">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h1 class="display-5 font-weight-bold mb-3">${product.name}</h1>
+                        <h3 class="text-warning mb-4">$${product.price}</h3>
+                        <p class="lead mb-4 text-justify">${product.description}</p>
+                        
+                        <h5 class="mb-3">Key Features:</h5>
+                        <ul class="list-group list-group-flush mb-4">
+                            ${product.features.map(feature => `<li class="list-group-item bg-light"><i class="fas fa-check text-success mr-2"></i> ${feature}</li>`).join('')}
+                        </ul>
+                        
+                        <button class="btn btn-dark btn-lg btn-block" onclick="alert('Added to Cart!')">Buy Now</button>
+                    </div>
+                `;
+                document.title = `${product.name} - Comfort Furniture`;
+            } else {
+                container.innerHTML = `
+                    <div class="col-12 text-center">
+                        <h2 class="text-danger">Product Not Found</h2>
+                        <p>We couldn't find the product you're looking for. Please check our collections.</p>
+                    </div>
+                `;
+            }
+        }
+
+        window.onload = renderProduct;
+    </script>
+</body>
+</html>
