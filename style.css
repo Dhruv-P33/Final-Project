@@ -58,8 +58,9 @@ section {
 }
 
 .image-container:hover .overlay {
-    opacity: 1; /* Hover Effect (Exp 06) */
-    text-decoration: none; /* No underline on link */
+    opacity: 0.6; /* Hover Effect (Exp 06) */
+    text-decoration: none; 
+    background-color: #21f30a;
 }
 
 .overlay:hover {

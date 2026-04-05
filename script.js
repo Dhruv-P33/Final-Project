@@ -1,6 +1,6 @@
 // Exp 08: Show Alert on Home Page Load
 window.onload = function() {
-    if (window.location.pathname.includes('index.html')) {
+   if (window.location.pathname.includes('index.html')){
         alert("Welcome to Comfort Furniture Website!");
     }
 };
